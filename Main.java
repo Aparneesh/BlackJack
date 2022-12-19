@@ -3,7 +3,6 @@ public class Main{
     
     public static void main(String[] args){
        Game game = new Game();
-       Dealer deal = new Dealer();
        boolean runGame = true;
        Scanner sc = new Scanner(System.in);
 
