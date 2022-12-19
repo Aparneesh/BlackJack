@@ -2,22 +2,35 @@ public class Player {
     Cards card = new Cards();
     int rand;
     int playerCardValue;
+    int aceCounter;
     String playerCards;
     public Player(){
     }
 
 
     public void firstCard(){
-        rand = (int) (Math.random() * 14);
+        rand = (int) (Math.random()*13);
         card.cardsValue(rand);
-        playerCardValue = card.getCardsValue();
+        if (card.getCardsValue() == 0){
+            playerCardValue = 11;
+            aceCounter++;
+        }
+        else{
+            playerCardValue = card.getCardsValue();
+        }
         playerCards = card.getCard();
     }
 
     public void secondCard(){
-        rand = (int) (Math.random() * 14);
+        rand = (int) (Math.random()*13);
         card.cardsValue(rand);
-        playerCardValue = card.getCardsValue();
+        if (card.getCardsValue() == 0){
+            playerCardValue = 11;
+            aceCounter++;
+        }
+        else{
+            playerCardValue = card.getCardsValue();
+        }
         playerCards = card.getCard();
     }
 
