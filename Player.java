@@ -8,6 +8,7 @@ public class Player {
     }
 
 
+    // same as dealer class
     public void firstCard(){
         rand = (int) (Math.random()*13);
         card.cardsValue(rand);
@@ -20,6 +21,7 @@ public class Player {
         }
         playerCards = card.getCard();
     }
+    
 
     public void secondCard(){
         rand = (int) (Math.random()*13);

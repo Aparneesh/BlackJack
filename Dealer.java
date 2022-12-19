@@ -9,9 +9,11 @@ public class Dealer {
     public Dealer(){
     }
 
+    //gets first card
     public void firstCard(){
         rand = (int) (Math.random()*13);
         card.dealerCard(rand);
+        //if there is an ace, it adds it to the counter and now ace is worth 11
         if (card.getCardsValue() == 0){
             value = 11;
             aceCounter++;
@@ -22,6 +24,7 @@ public class Dealer {
         dealerCards = card.getCard();
     }
 
+    //gets second card (everything else is the same)
     public void secondCard(){
         rand = (int) (Math.random()*13);
         card.dealerCard(rand);
@@ -38,12 +41,12 @@ public class Dealer {
 
 
 
-
-
+    //gets dealer's Card
     public String getdealerCard(){
         return dealerCards;
     }
 
+    //gets dealer's card value 
     public int getdealerValue(){
         return value;
     }
