@@ -1,3 +1,5 @@
+import Key_Code.Cards;
+
 public class Player {
     Cards card = new Cards();
     int rand;

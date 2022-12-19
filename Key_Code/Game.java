@@ -1,4 +1,8 @@
+package Key_Code;
 import java.util.Scanner;
+
+
+
 import java.util.ArrayList;
 public class Game {
     ArrayList<Integer> ace = new ArrayList<Integer>();
@@ -204,7 +208,7 @@ public void hit(int value, int dealerValue, int gamble){
     //But it still runs if player got 21 because if the dealer gets 21, then it's a push meaning tie
     while(!(value > 21)){
         deal.secondCard();
-        fancyText("The Dealer's reveals their second card... ");
+        fancyText("The Dealer reveals their second card... ");
         fancyText("It's a " + deal.getdealerCard());
         dealerValue = dealerValue + deal.value2;
 
@@ -259,9 +263,9 @@ public void hit(int value, int dealerValue, int gamble){
     }
     
     //conditions of winning or losing
-    if(value == 21){
+    if(value == 21 && (!(dealerValue == value))){
         score = score + (gamble * (3/2));
-        fancyText("You win!!");
+        fancyText("You win!!!");
     }
     else if(value > 21){
         score = score - gamble;
@@ -288,7 +292,7 @@ public void hit(int value, int dealerValue, int gamble){
 public void stand(int value, int dealerValue, int gamble){
     fancyText("\033[H\033[2JYou stand");
     deal.secondCard();
-    fancyText("The Dealer's reveals their second card... ");
+    fancyText("The Dealer reveals their second card... ");
     fancyText("It's a " + deal.getdealerCard());
     dealerValue = dealerValue + deal.value2;
 
@@ -338,7 +342,7 @@ public void stand(int value, int dealerValue, int gamble){
         fancyText("Dealer's card value is: " + dealerValue);
     }
 
-    if(value == 21){
+    if(value == 21 && (!(dealerValue == value))){
         score = score + (gamble * (3/2));
         fancyText("You win!!!");
     }
@@ -365,6 +369,7 @@ public void stand(int value, int dealerValue, int gamble){
 }
 
 // for making space between letters
+//thanks to frank norris
 private static void fancyText(String text){
     for (char c : text.toCharArray()){
     System.out.print(c);

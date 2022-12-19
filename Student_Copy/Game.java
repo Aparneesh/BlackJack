@@ -1,4 +1,9 @@
 import java.util.Scanner;
+
+import Key_Code.Cards;
+import Key_Code.Dealer;
+import Key_Code.Player;
+
 import java.util.ArrayList;
 public class Game {
     ArrayList<Integer> ace = new ArrayList<Integer>();
@@ -255,7 +260,7 @@ public void hit(int value, int dealerValue, int gamble){
     }
     
     //conditions of winning or losing
-    if(/*TO DO: player hits blackjack */){
+    if(/*TO DO: player hits blackjack and dealer value doesn't equal player value */){
         score = score + (gamble * (3/2));
         fancyText("You win!!");
     }
@@ -335,7 +340,7 @@ public void stand(int value, int dealerValue, int gamble){
     }
 
    //conditions of winning or losing
-    if(/*TO DO: player hits blackjack */){
+    if(/*TO DO: player hits blackjack and dealer value doesn't equal player value */){
         score = score + (gamble * (3/2));
         fancyText("You win!!");
     }

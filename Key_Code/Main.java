@@ -1,4 +1,7 @@
+package Key_Code;
 import java.util.Scanner;
+
+
 public class Main{
     
     public static void main(String[] args){
@@ -11,7 +14,7 @@ public class Main{
        fancyText("▒█▒█▒█ █▀▀ █░░ █░░ █░░█ █░▀░█ █▀▀ 　 ░▒█░░ █░░█ 　 ▒█▀▀▄ █░░ █▄▄█ █░░ █▀▄ ░▄░▒█ █▄▄█ █░░ █▀▄");
        fancyText("▒█▄▀▄█ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀▀ ▀░░░▀ ▀▀▀ 　 ░▒█░░ ▀▀▀▀ 　 ▒█▄▄█ ▀▀▀ ▀░░▀ ▀▀▀ ▀░▀ ▒█▄▄█ ▀░░▀ ▀▀▀ ▀░▀");
 
-       fancyTitle("In this version, you are given $100 to begin with. You can gamble any amount fit but your goal is turn that intial amount to $1000. You can take as many turns as you want, but if you reach $0, you lose. Without a further delay, let's GAMBLE!!!! (18+ only please or else I get in trouble)                                                    \033[H\033[2J");
+       fancyTitle("In this version, you are given $100 to begin with. You can gamble any amount fit but your goal is turn that intial amount to $1000. You can take as many turns as you want, but if you reach $0, you lose. Without a further delay, let's GAMBLE!!!! (18+ only please or else I'll get in trouble)                                                    \033[H\033[2J");
 
 
        //asks the player if they want to play again
@@ -40,6 +43,7 @@ public class Main{
 
 
     //makes it so that there is a time of 10 milliseconds between each letter
+    //thanks to frank norris
     private static void fancyText(String text){
         for (char c : text.toCharArray()){
         System.out.print(c);
@@ -53,6 +57,7 @@ public class Main{
 
 
     //makes it so that there is a time of 75 milliseconds between each letter
+    //thanks to frank norris
     private static void fancyTitle(String text){
         for (char c : text.toCharArray()){
         System.out.print(c);
