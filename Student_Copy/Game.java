@@ -10,6 +10,7 @@ public class Game {
     int totalPlayerValue;
     int totalDealerValue;
     double score;
+    //cringe is used to check invalid input for gamble variable
     boolean cringe;
     boolean game;
     Scanner sc = new Scanner(System.in);
@@ -20,11 +21,11 @@ public class Game {
     public void playGame(){
         score = 100;
         //the loop runs unless score is 0 or more than or equal to 1000
-        while (!(score == 0 || score == 1000 || score > 1000)){
+        while (/*TO DO: score isn't 0 or more and than or equal to 1000*/){
             game = true;
             System.out.println("Your current money is $" + score);
             //the loop runs until you won, tie or lost
-            while (game == true){
+            while (/*TO DO: figure out based on boolean above*/){
                 System.out.print("How much are you going to bet? ");
                 //user inputed number
                 int gamble = sc.nextInt();
@@ -38,16 +39,9 @@ public class Game {
                 }
                 
                 //checks for valid inputs
-                while (cringe == false){
-                    System.out.println("Invalid amount. Try Again");
-                    gamble = sc.nextInt();
-                    if (gamble > score + 1){
-                        cringe = false;
-                    }
-                    else{
-                        cringe = true;
-                    }
-                }
+                //TO DO: make a while loop for invalid amount for gamble
+
+                
 
                 play.firstCard();
                 fancyText("\033[H\033[2JYou draw your first card");
@@ -91,23 +85,27 @@ public class Game {
                 fancyText("What would you like to do?\n[1]Fold\n[2]Hit\n[3]Stand");
                 String choice = sc.next();
 
-                if (choice.equals("1")){
+                
+                if (/*TO DO: if user input is 1 */)){
+                    //user folds and game resets
                     score = score - (gamble/2);
-                    game = false;
+                    /*TO DO: game resets */
                 }
-                else if(choice.equals("2")){
+                else if(/*TO DO: if user input is 2 */){
+                    //user hits and game goes to hit method
                     hit(totalPlayerValue, totalDealerValue, gamble);
-                    game = false;
+                    /*TO DO: game resets */
                 }
-                else if(choice.equals("3")){
+                else if(/*TO DO: if user input is 3 */)){
+                    //user stands and game goes to stand method
                     stand(totalPlayerValue, totalDealerValue, gamble);
-                    game = false;
+                    /*TO DO: game resets */
                 }
 
             }
             
         }
-        if(score == 0){
+        if(/*TO DO: player has no money*/){
             fancyText("\033[H\033[2JHAHAHA. LOOK WHO HAS NO MONEY!!!! I guess we both are similar in some way.... :_(");
         }
         else{
@@ -148,8 +146,8 @@ public void hit(int value, int dealerValue, int gamble){
 
     fancyText("Your card value is: " + value);
 
-    //it skips asking "do you want to hit again" if value is greater than or equal to 21
-    if(value >= 21){
+    //skips asking "do you want to hit again" if value is greater than or equal to 21
+    if(/*TO DO: player card is more than or equal to 21*/){
        hit = false;
     }
     else{
@@ -157,12 +155,12 @@ public void hit(int value, int dealerValue, int gamble){
     }
 
     //if player wants to hit again it runs in this loop until they equal or go over 21
-    while(hit == true){
+    while(/*TO DO: make this loop run using boolean from above*/){
         fancyText("Do you want to hit again?\n[1]Yes\n[2]No");
         String choice = sc.next();
 
         //player wants to hit
-        if(choice.equals("1")){
+        if(/*TO DO: user input is 1*/){
             play.firstCard();
             fancyText("You hit and get a " + play.getPlayerCard());
             value = value + play.getPlayerValue();
@@ -185,24 +183,22 @@ public void hit(int value, int dealerValue, int gamble){
                 break;
             }
             fancyText("Your card value is: " + value);
-            if(value >= 21){
-                //breaks if more than or equal to 21
+            if(/*TO DO: player card value is more than or equal to 21 */){
                 break;
             }
             hit = true;
 
         }
         //player doesn't want to hit
-        else if(choice.equals("2")){
+        else if(/*TO DO: user input is two*/){
             hit = false;
         }
         
     }
     
 
-    //if player value is more than 21 than they automatically lose and it doesn't run this loop
-    //But it still runs if player got 21 because if the dealer gets 21, then it's a push meaning tie
-    while(!(value > 21)){
+    //loop runs if player is less than or equal to 21
+    while(/*TO DO: player card is less or equal to 21*/){
         deal.secondCard();
         fancyText("The Dealer's reveals their second card... ");
         fancyText("It's a " + deal.getdealerCard());
@@ -230,7 +226,7 @@ public void hit(int value, int dealerValue, int gamble){
         
 
         //if dealer's card don't add up to 17 or more then it runs till it does
-        while (dealerValue < 17){
+        while (/*TO DO: dealer card less than 17*/){
             deal.secondCard();
             fancyText("The Dealer's next card is " + deal.getdealerCard());
             dealerValue = dealerValue + deal.value2;
@@ -259,23 +255,23 @@ public void hit(int value, int dealerValue, int gamble){
     }
     
     //conditions of winning or losing
-    if(value == 21){
+    if(/*TO DO: player hits blackjack */){
         score = score + (gamble * (3/2));
         fancyText("You win!!");
     }
-    else if(value > 21){
+    else if(/*TO DO: player card is over 21 */){
         score = score - gamble;
         fancyText("You bust!!!");
     }
-    else if(dealerValue > 21){
+    else if(/*TO DO: dealer card is over 21 */){
         score = score + gamble;
         fancyText("The dealer busts. You win!!!");
     }
-    else if(dealerValue < value){
+    else if(/*TO DO: player card is more than dealer card */){
         score = score + gamble;
         fancyText("You win!!!");
     }
-    else if(value == dealerValue){
+    else if(/*TO DO: player card is the same as dealer card*/){
         fancyText("YOU TIE!!!");
     }
     else{
@@ -313,7 +309,7 @@ public void stand(int value, int dealerValue, int gamble){
 
     fancyText("Dealer's card value is: " + dealerValue);
 
-    while (dealerValue < 17){
+    while (/*TO DO: dealer card is less than 17 */){
         deal.secondCard();
         fancyText("The Dealer's next card is " + deal.getdealerCard());
         dealerValue = dealerValue + deal.value2;
@@ -338,28 +334,29 @@ public void stand(int value, int dealerValue, int gamble){
         fancyText("Dealer's card value is: " + dealerValue);
     }
 
-    if(value == 21){
+   //conditions of winning or losing
+    if(/*TO DO: player hits blackjack */){
         score = score + (gamble * (3/2));
-        fancyText("You win!!!");
+        fancyText("You win!!");
     }
-    else if(value > 21){
+    else if(/*TO DO: player card is over 21 */){
         score = score - gamble;
-        fancyText("You lose!!!");
+        fancyText("You bust!!!");
     }
-    else if(dealerValue > 21){
+    else if(/*TO DO: dealer card is over 21 */){
+        score = score + gamble;
+        fancyText("The dealer busts. You win!!!");
+    }
+    else if(/*TO DO: player card is more than dealer card */){
         score = score + gamble;
         fancyText("You win!!!");
     }
-    else if(dealerValue < value){
-        score = score + gamble;
-        fancyText("You win!!!");
-    }
-    else if(value == dealerValue){
+    else if(/*TO DO: player card is the same as dealer card*/){
         fancyText("YOU TIE!!!");
     }
     else{
         score = score - gamble;
-        fancyText("You lose!!");
+        fancyText("You lose");
     }
 
 }
